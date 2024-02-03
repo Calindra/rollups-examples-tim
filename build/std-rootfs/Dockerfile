@@ -118,7 +118,7 @@ COPY --from=local-deployments /app/rollups/deployments/hardhat/* ./deployments/l
 
 COPY build-dapp-fs.sh /usr/local/bin
 COPY default.json /opt/cartesi/
-
+RUN chmod +x /usr/local/bin/build-dapp-fs.sh
 RUN build-dapp-fs.sh /opt/cartesi/default.json dapp.json dapp.ext2
 
 
@@ -145,6 +145,7 @@ USER cartesi
 
 # build machine
 COPY build-machine.sh /usr/local/bin
+# RUN sudo chmod +x /usr/local/bin/build-machine.sh
 RUN mkdir -p /var/opt/cartesi/machine-snapshots
 RUN build-machine.sh /var/opt/cartesi/machine-snapshots/0_0 $NETWORK
 RUN ln -s /var/opt/cartesi/machine-snapshots/0_0 /var/opt/cartesi/machine-snapshots/latest

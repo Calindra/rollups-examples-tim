@@ -7,6 +7,7 @@ echo "Deploying DApp \"$DAPP_NAME\" on network \"$NETWORK\" using consensus addr
 cartesi-rollups create \
     --rpc "$RPC_URL" \
     --mnemonic "$MNEMONIC" \
+    --deploymentFile "/deployments/$NETWORK/rollups.json" \
     --templateHashFile /var/opt/cartesi/machine-snapshots/latest/hash \
     --outputFile "/deployments/$NETWORK/$DAPP_NAME.json" \
     --consensusAddress "$CONSENSUS_ADDRESS"

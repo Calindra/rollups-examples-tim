@@ -8,10 +8,13 @@ services:
       - machine:/var/opt/cartesi/machine-snapshots
 
   authority-deployer:
+    # image: cartesi/rollups-hardhat:1.0.0
     image: gbbabarros/rollups-hardhat:1.0.1
     command:
       [
         "deploy",
+        "--tags",
+        "Authority",
         "--network",
         "${NETWORK:?undefined NETWORK}",
         "--export",
@@ -22,8 +25,6 @@ services:
     environment:
       - MNEMONIC=${MNEMONIC:?undefined MNEMONIC}
       - RPC_URL=${RPC_URL:?undefined RPC_URL}
-      - NETWORK=${NETWORK:?undefined NETWORK}
-      - CHAIN_ID=57000
 
   dapp-deployer:
     build: ./build/testnet-dapp-deployer
@@ -41,7 +42,6 @@ services:
       - NETWORK=${NETWORK:?undefined NETWORK}
       - RPC_URL=${RPC_URL:?undefined RPC_URL}
       - DAPP_NAME=${DAPP_NAME:?undefined DAPP_NAME}
-      - CHAIN_ID=57000
 
 volumes:
   machine: {}
