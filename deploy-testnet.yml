@@ -2,7 +2,8 @@ version: "3.9"
 
 services:
   machine:
-    image: cartesi/dapp:${DAPP_NAME:?undefined DAPP_NAME}-devel-machine
+    # image: cartesi/dapp:${DAPP_NAME:?undefined DAPP_NAME}-devel-machine
+    image: cartesi/dapp:${DAPP_NAME:?undefined DAPP_NAME}-devel-server
     command: xxd -c 256 -p latest/hash; sleep 3
     volumes:
       - machine:/var/opt/cartesi/machine-snapshots
