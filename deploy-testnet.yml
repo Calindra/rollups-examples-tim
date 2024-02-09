@@ -4,7 +4,7 @@ services:
   machine:
     # image: cartesi/dapp:${DAPP_NAME:?undefined DAPP_NAME}-devel-machine
     image: cartesi/dapp:${DAPP_NAME:?undefined DAPP_NAME}-devel-server
-    command: xxd -c 256 -p latest/hash; sleep 3
+    command: apt update && apt install xxd && xxd -c 256 -p latest/hash; sleep 3
     volumes:
       - machine:/var/opt/cartesi/machine-snapshots
 
