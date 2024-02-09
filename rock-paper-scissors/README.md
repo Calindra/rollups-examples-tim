@@ -36,3 +36,10 @@ After the back-end successfully starts, it should print an output like the follo
 INFO:__main__:HTTP rollup_server url is http://127.0.0.1:5004
 INFO:__main__:Sending finish
 ```
+
+## Running on Syscoin Rollux
+
+```shell
+export WSS_URL=wss://rpc-tanenbaum.rollux.com/wss
+DAPP_NAME=rock-paper-scissors docker compose --env-file ../env.rollux_testnet -f ../docker-compose-testnet.yml -f ./docker-compose.override.yml up
+```
